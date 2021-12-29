@@ -25,10 +25,14 @@ docker build -t explore_mars .
 docker run -t -i explore_mars
 
 5 5 #coordenadas do canto superior direito do campo a ser explorado
+
 1 3 N #Coordenadas e direção da primeira sonda no ponto inicial no formato "X Y D"
+
 LMLMLMLMM #Sequência de movimentos a serem realizados pela sonda
+
 3 3 E #Coordenadas e direção da segunda sonda no ponto inicial no formato "X Y D"
-MMRMMRMRRM
+
+MMRMMRMRRM #Sequência de movimentos a serem realizados pela sonda
 
 **Outupt do resultado das posições finais das sondas no formato "X Y D""**
 
