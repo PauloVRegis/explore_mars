@@ -2,8 +2,12 @@ import sys
 import os
 import math
 
-x1, y1 = input().split()
-x1, y1 = int(x1), int(y1)
+try:
+    x1, y1 = input().split()
+    x1, y1 = int(x1), int(y1)
+except ValueError:
+    print('Numeros devem ser dois inteiros!')
+    sys.exit()
 x, y, direct = input().split()
 x, y = int(x), int(y)
 mov = input()
@@ -11,6 +15,7 @@ x2, y2, direct2 = input().split()
 x2, y2 = int(x2), int(y2)
 mov2 = input()
 lst = []
+
 
 def check(x, y, x2, y2, x1, y1):
     if x < 0 or x > x1 or y < 0 or y > y1 or x2 < 0 or x2 > x1 or y2 < 0 or y2 > y1:
