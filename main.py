@@ -1,6 +1,3 @@
-#import numpy as np
-# import matplotlib.pyplot as plt
-# import matplotlib.animation as animation
 import sys
 import os
 import math
@@ -10,17 +7,17 @@ x1, y1 = int(x1), int(y1)
 x, y, direct = input().split()
 x, y = int(x), int(y)
 mov = input()
+x2, y2, direct2 = input().split()
+x2, y2 = int(x2), int(y2)
+mov2 = input()
 lst = []
 
-def check(x, y, x1, y1):
-    if x < 0 or x > x1 or y < 0 or y > y1:
+def check(x, y, x2, y2, x1, y1):
+    if x < 0 or x > x1 or y < 0 or y > y1 or x2 < 0 or x2 > x1 or y2 < 0 or y2 > y1:
         return False
     else:
         return True
-
-
-if __name__== "__main__":
-    # check(x,y,direct)
+def probe1(x, y, direct, mov, x1, y1):
     for i in range(len(mov)):
         if mov[i] == 'L':
             if direct == 'N':
@@ -49,10 +46,54 @@ if __name__== "__main__":
                 x += 1
             elif direct == 'W':
                 x -= 1
-if check(x, y, x1, y1):
-                # lst.append(x), lst.append(y), lst.append(direct)
-    print(x, y, direct)
-else:
-    print('You are out of the Mars!')
-    sys.exit()
+    if check(x, y, x2, y2, x1, y1):
+        print(x, y, direct)
+    else:
+        print('You are out of the Mars!')
+        sys.exit()
+
+
+def probe2(direct2, x2, y2, mov2, x1, y1):
+    for j in range(len(mov2)):
+        if mov2[j] == 'L':
+            if direct2 == 'N':
+                direct2 = 'W'
+            elif direct2 == 'S':
+                direct2 = 'E'
+            elif direct2 == 'E':
+                direct2 = 'N'
+            elif direct2 == 'W':
+                direct2 = 'S'
+        elif mov2[j] == 'R':
+            if direct2 == 'N':
+                direct2 = 'E'
+            elif direct2 == 'S':
+                direct2 = 'W'
+            elif direct2 == 'E':
+                direct2 = 'S'
+            elif direct2 == 'W':
+                direct2 = 'N'
+        elif mov2[j] == 'M':
+            if direct2 == 'N':
+                y2 += 1
+            elif direct2 == 'S':
+                y2 -= 1
+            elif direct2 == 'E':
+                x2 += 1
+            elif direct2 == 'W':
+                x2 -= 1
+    if check(x, y, x2, y2, x1, y1):
+        print(x2, y2, direct2)
+    else:
+        print('You are out of the Mars!')
+        sys.exit()
+
+def main():
+    probe1(x, y, direct, mov, x1, y1)
+    probe2(direct2, x2, y2, mov2, x1, y1)
+    check(x, y, x2, y2, x1, y1)
+
+if __name__== "__main__":
+    main()
+
 
